@@ -32,7 +32,7 @@ create table Field (
     required        boolean not null,
     fieldType       varchar(10) not null,
     fieldName       varchar(100) not null,
-    fieldProps      text[][] not null,
+    fieldJSON       text,
     primary key     (fieldId, parentForm)
 );
 
