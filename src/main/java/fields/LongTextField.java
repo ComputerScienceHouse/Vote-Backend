@@ -11,12 +11,12 @@ import org.json.simple.JSONObject;
  */
 public class LongTextField extends TextField {
     public static final int MAXLENGTH = 10000;
-    LongTextField(long formId) {
-        super(formId, LongTextField.MAXLENGTH);
+    LongTextField() {
+        super(LongTextField.MAXLENGTH);
     }
 
-    LongTextField(long formId, int max) {
-        super(formId, max);
+    LongTextField(int max) {
+        super(max);
     }
 
     public JSONObject toJSON() {

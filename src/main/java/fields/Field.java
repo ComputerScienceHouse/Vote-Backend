@@ -13,19 +13,14 @@ public abstract class Field implements JSONable {
 
     private long formId;
     private boolean required;
+    private String fieldName;
 
-    protected Field(long formID) {
-        this.formId = formID;
+    public Field() {
         this.required = false;
     }
 
-    protected Field(long formID, boolean required) {
-        this.formId = formID;
+    public Field(boolean required) {
         this.required = required;
-    }
-
-    public long getFormId() {
-        return formId;
     }
 
     public boolean isRequired() {
@@ -36,5 +31,18 @@ public abstract class Field implements JSONable {
         this.required = required;
     }
 
-    public abstract JSONObject toJSON();
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
+    }
+
+    public JSONObject toJSON() {
+        JSONObject jso = new JSONObject();
+        jso.put(JSONable.NAME, this.fieldName);
+        jso.put(JSONable.REQUIRED, this.required);
+        return jso;
+    }
 }

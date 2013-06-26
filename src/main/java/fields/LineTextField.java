@@ -11,12 +11,12 @@ import org.json.simple.JSONObject;
  */
 public class LineTextField extends TextField {
     public static final int MAXLENGTH = 128;
-    LineTextField(long formId) {
-        super(formId, LineTextField.MAXLENGTH);
+    LineTextField() {
+        super(LineTextField.MAXLENGTH);
     }
 
-    LineTextField(long formId, int max) {
-        super(formId, max);
+    LineTextField(int max) {
+        super(max);
     }
     public JSONObject toJSON() {
         return null;

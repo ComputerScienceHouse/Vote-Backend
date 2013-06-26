@@ -11,11 +11,11 @@ import java.util.ArrayList;
  */
 public class Form {
     private ArrayList<Field> elements;
-    Form(ArrayList<Field> elements) {
+    public Form(ArrayList<Field> elements) {
         this.elements = elements;
     }
 
-    Form() {
+    public Form() {
         this.elements = new ArrayList<Field>();
     }
 

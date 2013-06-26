@@ -12,5 +12,10 @@ import org.json.simple.*;
  * All form elements must inherit from JSONable
  */
 public interface JSONable {
+    public static final String NAME = "name";
+    public static final String REQUIRED = "req";
+    public static final String TYPE = "type";
+    public static final String PROPERTIES = "props";
+
     public JSONObject toJSON();
 }

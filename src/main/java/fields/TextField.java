@@ -1,5 +1,7 @@
 package fields;
 
+import org.json.simple.JSONObject;
+
 /**
  * Created with IntelliJ IDEA.
  * User: ahanes
@@ -9,13 +11,17 @@ package fields;
  */
 public abstract class TextField extends Field {
     private int maxChars;
-    TextField(long formId, int maxChars) {
-        super(formId);
+    public TextField(int maxChars) {
+        super();
         this.maxChars = maxChars;
     }
 
-    TextField(long formId) {
-        super(formId);
+    public JSONObject toJSON() {
+        return null;
+    }
+
+    public TextField() {
+        super();
         this.maxChars = 0;
     }
 }
