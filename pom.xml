@@ -7,7 +7,19 @@
     <groupId>CSHVote-Backend</groupId>
     <artifactId>CSHVote-Backend</artifactId>
     <version>0-DEVELOPMENT</version>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <dependencies>
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
