@@ -1,0 +1,39 @@
+create table VotingUser (
+    userId          integer primary key
+);
+
+create table ValidVoter (
+    userId          integer not null,
+    formId          Integer not null,
+    primary key     (userId, formId)
+);
+
+create table fieldResponse (
+    userId          integer,
+    formId          integer not null,
+    fieldId         integer not null,
+    response        text,
+    primary key     (userId, formId, fieldId)
+);
+
+create table Form (
+    formId          serial primary key,
+    formName        varchar(100) not null,
+    formCreateDate  Date not null check (formCreateDate >= now()) default now(),
+    formOpenDate    Date not null check (formOpenDate > now()),
+    formCloseDate   Date not null check (formCloseDate > now()),
+    ownerId         integer not null,
+    anonymous       boolean not null
+);
+
+create table Field (
+    fieldId         serial,
+    parentForm      integer not null,
+    required        boolean not null,
+    fieldType       varchar(10) not null,
+    fieldName       varchar(100) not null,
+    fieldProps      text[][] not null,
+    primary key     (fieldId, parentForm)
+);
+
+
