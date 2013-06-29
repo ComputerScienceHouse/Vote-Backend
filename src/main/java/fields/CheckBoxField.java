@@ -1,7 +1,7 @@
 package fields;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,18 +10,23 @@ import org.json.simple.JSONValue;
  * Time: 2:34 PM
  * To change this template use File | Settings | File Templates.
  */
-public class CheckBoxField extends RadioField {
+public class CheckBoxField extends SelectionField {
     public static final String PROPERTY_OPTIONS = "options";
     public static final String NAME = "CheckBox";
+
     public CheckBoxField() {
         super();
     }
+
     public JSONObject toJSON() {
         JSONObject jso = super.toJSON();
-        JSONObject properties = (JSONObject) JSONValue.parse(jso.get(JSONable.PROPERTIES).toString());
-        properties.remove(JSONable.TYPE);
-        properties.put(JSONable.TYPE, CheckBoxField.NAME);
-        jso.remove(JSONable.PROPERTIES);
+        JSONArray opts = new JSONArray();
+        for(int i = 0; i < options.size(); ++i) {
+            opts.add(i, options.get(i));
+        }
+        JSONObject properties = new JSONObject();
+        properties.put(JSONable.TYPE, NAME);
+        properties.put(PROPERTY_OPTIONS, opts);
         jso.put(JSONable.PROPERTIES, properties);
         return jso;
     }
