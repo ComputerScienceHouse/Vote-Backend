@@ -1,8 +1,5 @@
 package fields;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-
 /**
  * Created with IntelliJ IDEA.
  * User: ahanes
@@ -16,18 +13,5 @@ public class RadioField extends SelectionField {
 
     public RadioField() {
         super();
-    }
-
-    public JSONObject toJSON() {
-        JSONObject jso = super.toJSON();
-        JSONArray opts = new JSONArray();
-        for(int i = 0; i < options.size(); ++i) {
-            opts.add(i, options.get(i));
-        }
-        JSONObject properties = new JSONObject();
-        properties.put(JSONable.TYPE, NAME);
-        properties.put(PROPERTY_OPTIONS, opts);
-        jso.put(JSONable.PROPERTIES, properties);
-        return jso;
     }
 }

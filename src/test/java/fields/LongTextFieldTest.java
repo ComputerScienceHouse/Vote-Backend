@@ -13,6 +13,5 @@ public class LongTextFieldTest {
     @Test
     public void testToJSON() throws Exception {
         LongTextField f = new LongTextField(50);
-        System.out.println(f.toJSON().toJSONString());
     }
 }

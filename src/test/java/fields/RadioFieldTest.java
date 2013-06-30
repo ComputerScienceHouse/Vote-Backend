@@ -1,7 +1,5 @@
 package fields;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 import org.junit.Test;
 
 /**
@@ -12,16 +10,6 @@ import org.junit.Test;
  * To change this template use File | Settings | File Templates.
  */
 public class RadioFieldTest {
-    @Test
-    public void testToJSON() throws Exception {
-        RadioField f = new RadioField();
-        f.addOption("Test1");
-        f.addOption("Test2");
-        String s = f.toJSON().toJSONString();
-        JSONObject jso = (JSONObject) JSONValue.parse(s);
-        System.out.println("RadioButton JSON:\n" + jso);
-    }
-
     @Test
     public void testAddAndGetOption() throws Exception {
         RadioField f = new RadioField();

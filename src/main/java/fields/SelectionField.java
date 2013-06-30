@@ -1,7 +1,6 @@
 package fields;
 
-import org.json.simple.JSONObject;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +10,7 @@ import java.util.ArrayList;
  * Time: 7:10 PM
  * To change this template use File | Settings | File Templates.
  */
-public abstract class SelectionField extends Field{
+public abstract class SelectionField extends Field implements Serializable{
     public static final String PROPERTY_OPTIONS = "options";
     ArrayList<String> options;
 
@@ -41,10 +40,6 @@ public abstract class SelectionField extends Field{
 
     public void removeOption(String s) {
         options.remove(s);
-    }
-
-    public JSONObject toJSON() {
-        return super.toJSON();
     }
 
     public String toString() {

@@ -1,5 +1,6 @@
 package fields;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  * Time: 9:33 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Form {
+public class Form implements Serializable {
     private ArrayList<Field> elements;
     public Form(ArrayList<Field> elements) {
         this.elements = elements;
@@ -19,11 +20,19 @@ public class Form {
         this.elements = new ArrayList<Field>();
     }
 
+    public Field getField(int index) {
+        return this.elements.get(index);
+    }
+
     public void removeField(int index) {
         elements.remove(index);
     }
 
-    public void addField(Field f, int index) {
+    public void addField(int index, Field f) {
+        this.elements.add(index, f);
+    }
 
+    public void addField(Field f) {
+        this.elements.add(f);
     }
 }

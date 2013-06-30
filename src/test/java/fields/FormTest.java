@@ -1,5 +1,6 @@
 package fields;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.FileInputStream;
@@ -10,27 +11,42 @@ import java.io.ObjectOutputStream;
 /**
  * Created with IntelliJ IDEA.
  * User: ahanes
- * Date: 6/25/13
- * Time: 9:13 PM
+ * Date: 6/29/13
+ * Time: 7:43 PM
  * To change this template use File | Settings | File Templates.
  */
-public class CheckBoxFieldTest {
+public class FormTest {
+    public static Form form;
+    @Before
+    public void setUp() throws Exception {
+        form = new Form();
+    }
+
     @Test
-    public void testSerial() throws Exception{
-        System.out.println("ASD");
-        CheckBoxField f = new CheckBoxField();
-        f.addOption("Test1");
-        f.addOption("Test2");
+    public void testRemoveField() throws Exception {
+
+    }
+
+    @Test
+    public void testAddField() throws Exception {
+
+    }
+
+    @Test
+    public void testSerial() throws Exception {
+        Field f = new LineTextField(1);
+        f.setFieldName("SUPER");
+        f.setRequired(true);
+        form.addField(f);
         FileOutputStream fos = new FileOutputStream("testfile");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(f);
+        oos.writeObject(form);
         oos.flush();
         oos.close();
-        CheckBoxField read;
+        Form read;
         FileInputStream fis = new FileInputStream("testfile");
         ObjectInputStream ois = new ObjectInputStream(fis);
-        read = (CheckBoxField)ois.readObject();
+        read = (Form)ois.readObject();
         ois.close();
-        System.out.println(read.getOptions());
     }
 }
