@@ -1,8 +1,5 @@
 package fields;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-
 /**
  * Created with IntelliJ IDEA.
  * User: ahanes
@@ -19,14 +16,6 @@ public class LineTextField extends TextField {
 
     LineTextField(int max) {
         super(max);
-    }
-    public JSONObject toJSON() {
-        JSONObject jso = super.toJSON();
-        JSONObject props = (JSONObject) JSONValue.parse(jso.get(JSONable.PROPERTIES).toString());
-        props.put(JSONable.NAME, PROPERTY_NAME);
-        jso.remove(JSONable .PROPERTIES);
-        jso.put(JSONable.PROPERTIES, props);
-        return jso;
     }
 
     public String toString() {

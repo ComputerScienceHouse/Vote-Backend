@@ -1,6 +1,6 @@
 package fields;
 
-import org.json.simple.JSONObject;
+import java.io.Serializable;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,11 +9,13 @@ import org.json.simple.JSONObject;
  * Time: 2:16 PM
  * To change this template use File | Settings | File Templates.
  */
-public abstract class Field implements JSONable {
-
+public abstract class Field implements Serializable {
+    public static final String ANONYMOUS = "anonymous";
     private long formId;
     private boolean required;
     private String fieldName;
+
+    private boolean anonymous;
 
     public Field() {
         this.required = false;
@@ -39,10 +41,12 @@ public abstract class Field implements JSONable {
         this.fieldName = fieldName;
     }
 
-    public JSONObject toJSON() {
-        JSONObject jso = new JSONObject();
-        jso.put(JSONable.NAME, this.fieldName);
-        jso.put(JSONable.REQUIRED, this.required);
-        return jso;
+    public boolean isAnonymous() {
+        return anonymous;
     }
+
+    public void setAnonymous(boolean anonymous) {
+        this.anonymous = anonymous;
+    }
+
 }

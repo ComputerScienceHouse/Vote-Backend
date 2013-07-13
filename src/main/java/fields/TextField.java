@@ -1,7 +1,5 @@
 package fields;
 
-import org.json.simple.JSONObject;
-
 /**
  * Created with IntelliJ IDEA.
  * User: ahanes
@@ -17,14 +15,6 @@ public abstract class TextField extends Field {
     public TextField(int maxChars) {
         super();
         this.maxChars = maxChars;
-    }
-
-    public JSONObject toJSON() {
-        JSONObject jso = super.toJSON();
-        JSONObject props = new JSONObject();
-        props.put(PROPERTY_MAXCHARS, maxChars);
-        jso.put(JSONable.PROPERTIES, props);
-        return jso;
     }
 
     public TextField() {
