@@ -10,7 +10,6 @@
     <directives>
         <directive name="omitXmlDeclaration" value="true"/>
         <directive name="omitDoctypeDeclaration" value="true"/>
-        <directive name="maxInputSize" value="5000"/>
         <directive name="useXHTML" value="true"/>
         <directive name="maxInputSize" value="2000"/>
         <directive name="formatOutput" value="true"/>
@@ -157,10 +156,6 @@
         <tag name="li" action="validate"/>
 
     </tag-rules>
-
-
-
-    <!--  No CSS on Slashdot posts -->
 
     <css-rules>
     </css-rules>
