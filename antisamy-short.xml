@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <!--
-<b> <i> <p> <br> <a> <ol> <ul> <li> <dl> <dt> <dd> <em> <strong> <tt> <blockquote> <div> <ecode> <quote>
+Rules for titles and headers.
 -->
 
 <anti-samy-rules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -11,7 +11,7 @@
         <directive name="omitXmlDeclaration" value="true"/>
         <directive name="omitDoctypeDeclaration" value="true"/>
         <directive name="useXHTML" value="true"/>
-        <directive name="maxInputSize" value="2000"/>
+        <directive name="maxInputSize" value="100"/>
         <directive name="formatOutput" value="true"/>
         <directive name="embedStyleSheets" value="false"/>
     </directives>
@@ -117,7 +117,7 @@
 
         <!-- All reasonable formatting tags -->
 
-        <tag name="p" action="validate">
+        <tag name="p" action="remove">
             <attribute name="align"/>
         </tag>
 
@@ -126,34 +126,20 @@
         <tag name="b" action="validate"/>
         <tag name="em" action="validate"/>
         <tag name="blockquote" action="remove"/>
-        <tag name="tt" action="validate"/>
+        <tag name="tt" action="remove"/>
         <tag name="strong" action="validate"/>
 
-        <tag name="br" action="truncate"/>
+        <tag name="br" action="remove"/>
 
         <!-- Anchor and anchor related tags -->
 
-        <tag name="a" action="validate">
-
-            <attribute name="href" onInvalid="filterTag"/>
-            <attribute name="nohref">
-                <literal-list>
-                    <literal value="nohref"/>
-                    <literal value=""/>
-                </literal-list>
-            </attribute>
-            <attribute name="rel">
-                <literal-list>
-                    <literal value="nofollow"/>
-                </literal-list>
-            </attribute>
-        </tag>
+        <tag name="a" action="remove"/>
 
         <!-- List tags -->
 
-        <tag name="ul" action="validate"/>
-        <tag name="ol" action="validate"/>
-        <tag name="li" action="validate"/>
+        <tag name="ul" action="remove"/>
+        <tag name="ol" action="remove"/>
+        <tag name="li" action="remove"/>
 
     </tag-rules>
 
