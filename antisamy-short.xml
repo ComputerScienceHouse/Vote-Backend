@@ -11,7 +11,7 @@ Rules for titles and headers.
         <directive name="omitXmlDeclaration" value="true"/>
         <directive name="omitDoctypeDeclaration" value="true"/>
         <directive name="useXHTML" value="true"/>
-        <directive name="maxInputSize" value="100"/>
+        <directive name="maxInputSize" value="150"/>
         <directive name="formatOutput" value="true"/>
         <directive name="embedStyleSheets" value="false"/>
     </directives>
