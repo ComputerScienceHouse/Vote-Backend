@@ -1,5 +1,8 @@
 package fields;
 
+import fields.response.CheckBoxFieldResponse;
+import fields.response.FieldResponse;
+
 /**
  * Created with IntelliJ IDEA.
  * User: ahanes
@@ -9,14 +12,15 @@ package fields;
  */
 public class CheckBoxField extends SelectionField {
 
-    public static final String PROPERTY_OPTIONS = "options";
-    public static final String NAME = "CheckBox";
-
     public CheckBoxField() {
         super();
     }
 
     public String toString() {
         return null;
+    }
+
+    public FieldResponse generateResponseObject() {
+        return new CheckBoxFieldResponse(super.options);
     }
 }

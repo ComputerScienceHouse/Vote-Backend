@@ -29,5 +29,4 @@ public abstract class TextField extends Field {
     public void setMaxChars(int maxChars) {
         this.maxChars = maxChars;
     }
-
 }

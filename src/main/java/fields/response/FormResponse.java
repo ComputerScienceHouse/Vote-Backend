@@ -9,14 +9,12 @@ import java.util.ArrayList;
  */
 public class FormResponse {
     private ArrayList<FieldResponse> resp;
-    int formId;
-    public FormResponse(int formId) {
-        this.formId = formId;
-        this.resp = new ArrayList<FieldResponse>();
+    public FormResponse(ArrayList<FieldResponse> r) {
+        this.resp = (ArrayList<FieldResponse>) r.clone();
     }
 
-    public int getFormId() {
-        return this.formId;
+    public FormResponse() {
+        this.resp = new ArrayList<FieldResponse>();
     }
 
     void addFieldResponse(int index, FieldResponse r) {
