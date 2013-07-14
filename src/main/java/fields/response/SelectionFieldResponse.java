@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public abstract class SelectionFieldResponse extends FieldResponse {
     private ArrayList<String> options;
     private ArrayList<Boolean> selected;
-    SelectionFieldResponse(ArrayList<String> options) {
+    public SelectionFieldResponse(ArrayList<String> options) {
         super();
         this.options = options;
         this.selected = new ArrayList<Boolean>(options.size());

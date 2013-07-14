@@ -8,7 +8,7 @@ import fields.LongTextField;
  * Time: 6:33 PM
  */
 public class LongTextFieldResponse extends TextFieldResponse {
-    LongTextFieldResponse() {
+    public LongTextFieldResponse() {
     }
 
     public void setResponse(String response) {

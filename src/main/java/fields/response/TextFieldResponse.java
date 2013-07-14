@@ -7,7 +7,7 @@ package fields.response;
  */
 public abstract class TextFieldResponse extends FieldResponse {
     String response;
-    TextFieldResponse() {
+    public TextFieldResponse() {
         super();
     }
     public String getResponse() {

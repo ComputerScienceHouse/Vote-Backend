@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class FormResponse {
     private ArrayList<FieldResponse> resp;
     int formId;
-    FormResponse(int formId) {
+    public FormResponse(int formId) {
         this.formId = formId;
         this.resp = new ArrayList<FieldResponse>();
     }

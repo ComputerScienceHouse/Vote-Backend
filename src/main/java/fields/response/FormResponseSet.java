@@ -11,7 +11,7 @@ public class FormResponseSet implements Serializable {
     private ArrayList<FormResponse> set;
     private int formId;
 
-    FormResponseSet(int formId) {
+    public FormResponseSet(int formId) {
         this.formId = formId;
         this.set = new ArrayList<FormResponse>();
     }
