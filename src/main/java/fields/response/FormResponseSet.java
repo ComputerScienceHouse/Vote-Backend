@@ -23,4 +23,8 @@ public class FormResponseSet implements Serializable {
     public void addFormResponse(FormResponse r) {
         this.set.add(r);
     }
+
+    public int getSize() {
+        return this.set.size();
+    }
 }

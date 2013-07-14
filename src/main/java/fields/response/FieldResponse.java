@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Date: 7/13/13
  * Time: 6:31 PM
  */
-public class FieldResponse implements Serializable {
+public abstract class FieldResponse implements Serializable {
     private int fieldId;
 
     FieldResponse(int formId) {

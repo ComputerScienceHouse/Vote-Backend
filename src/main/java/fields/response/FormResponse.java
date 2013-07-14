@@ -30,4 +30,8 @@ public class FormResponse {
     public FieldResponse getFieldResponse(int index) {
         return resp.get(index);
     }
+
+    public int getSize() {
+        return this.resp.size();
+    }
 }

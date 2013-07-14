@@ -1,5 +1,7 @@
 package fields.response;
 
+import fields.LineTextField;
+
 /**
  * Author: Andrew Hanes
  * Date: 7/13/13
@@ -9,4 +11,12 @@ public class LineTextFieldResponse extends TextFieldResponse {
     LineTextFieldResponse(int fieldId) {
         super(fieldId);
     }
+
+    public void setResponse(String response) {
+        if(response.length() < LineTextField.MAXLENGTH)
+            this.response = response;
+        else
+            throw new IllegalArgumentException("Length must be less than " + LineTextField.MAXLENGTH);
+    }
+
 }

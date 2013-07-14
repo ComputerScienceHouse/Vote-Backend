@@ -5,8 +5,16 @@ package fields.response;
  * Date: 7/13/13
  * Time: 6:33 PM
  */
-public class TextFieldResponse extends FieldResponse {
+public abstract class TextFieldResponse extends FieldResponse {
+    String response;
     TextFieldResponse(int fieldId) {
         super(fieldId);
+    }
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
     }
 }
