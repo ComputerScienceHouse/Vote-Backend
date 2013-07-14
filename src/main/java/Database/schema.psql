@@ -8,17 +8,12 @@ create table ValidVoter (
     primary key     (userId, formId)
 );
 
-create table formResponse (
-    userId          integer references VotingUser(userId),
-    formId          integer not null references Form(formId),
-    object          bytes not null,
-    primary key     (userId, formId, fieldId)
-);
-
 create table Form (
     formId          serial primary key,
     ownerId         integer not null references VotingUser(userId),
-    object          bytes not null
+    formobject      bytes not null,
+    formresponse    bytes not null,
+    primary key     (formId, ownerId)
 );
 
 
