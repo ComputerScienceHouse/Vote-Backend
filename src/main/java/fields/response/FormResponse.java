@@ -17,11 +17,11 @@ public class FormResponse {
         this.resp = new ArrayList<FieldResponse>();
     }
 
-    void addFieldResponse(int index, FieldResponse r) {
+    public void addFieldResponse(int index, FieldResponse r) {
         this.resp.add(index, r);
     }
 
-    void addFieldResponse(FieldResponse r) {
+    public void addFieldResponse(FieldResponse r) {
         this.resp.add(r);
     }
 
