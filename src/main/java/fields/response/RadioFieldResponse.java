@@ -8,8 +8,8 @@ import java.util.ArrayList;
  * Time: 6:33 PM
  */
 public class RadioFieldResponse extends SelectionFieldResponse {
-    RadioFieldResponse(int fieldId, ArrayList<String> opts) {
-        super(fieldId, opts);
+    RadioFieldResponse(ArrayList<String> opts) {
+        super(opts);
     }
 
     public void setSelected(ArrayList<Boolean> sel) {

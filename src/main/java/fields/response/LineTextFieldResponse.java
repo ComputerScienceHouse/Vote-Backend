@@ -8,8 +8,7 @@ import fields.LineTextField;
  * Time: 6:31 PM
  */
 public class LineTextFieldResponse extends TextFieldResponse {
-    LineTextFieldResponse(int fieldId) {
-        super(fieldId);
+    LineTextFieldResponse() {
     }
 
     public void setResponse(String response) {

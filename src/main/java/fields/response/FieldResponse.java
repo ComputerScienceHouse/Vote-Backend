@@ -8,14 +8,7 @@ import java.io.Serializable;
  * Time: 6:31 PM
  */
 public abstract class FieldResponse implements Serializable {
-    private int fieldId;
+    FieldResponse() {
 
-    FieldResponse(int formId) {
-        this.fieldId = formId;
     }
-
-    public int getFieldId() {
-        return fieldId;
-    }
-
 }

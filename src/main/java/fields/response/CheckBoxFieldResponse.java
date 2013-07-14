@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Time: 6:31 PM
  */
 public class CheckBoxFieldResponse extends SelectionFieldResponse {
-    CheckBoxFieldResponse(int fieldId, ArrayList<String> options) {
-        super(fieldId, options);
+    CheckBoxFieldResponse(ArrayList<String> options) {
+        super(options);
     }
 }
