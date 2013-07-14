@@ -21,12 +21,6 @@ public class Database {
             conn = DriverManager.getConnection(
                     "jdbc:postgresql://" + in.nextLine(), in.nextLine(),
                     in.nextLine());
-
-            DatabaseMetaData m = conn.getMetaData();
-            ResultSet rs = m.getTables(null, null, "%", null);
-            while(rs.next()) {
-                System.out.println(rs.getString(3));
-            }
         }
         catch(FileNotFoundException e) {
             e.printStackTrace();
@@ -41,9 +35,21 @@ public class Database {
 
     }
 
-    public void saveForm(int ownerId, fields.Form form) {
-
+    public void addVotingUser(int userId) throws SQLException{
+        String q = "insert into VotingUser values (?);";
+        PreparedStatement st = conn.prepareStatement(q);
+        st.setInt(1, userId);
+        st.executeUpdate();
     }
+
+    public boolean votingUserExists(int userId) throws SQLException {
+        String q = "select * from VotingUser where userId = ?";
+        PreparedStatement st = conn.prepareStatement(q);
+        st.setInt(1, userId);
+        ResultSet rs = st.executeQuery();
+        return rs.next();
+    }
+
 
 
 }
