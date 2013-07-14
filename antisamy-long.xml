@@ -126,7 +126,7 @@
         <tag name="b" action="validate"/>
         <tag name="em" action="validate"/>
         <tag name="blockquote" action="remove"/>
-        <tag name="tt" action="validate"/>
+        <tag name="tt" action="remove"/>
         <tag name="strong" action="validate"/>
 
         <tag name="br" action="truncate"/>
