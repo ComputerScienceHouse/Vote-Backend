@@ -1,5 +1,7 @@
 package fields;
 
+import fields.response.FieldResponse;
+
 import java.io.Serializable;
 
 /**
@@ -10,11 +12,8 @@ import java.io.Serializable;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class Field implements Serializable {
-    public static final String ANONYMOUS = "anonymous";
-    private long formId;
     private boolean required;
     private String fieldName;
-
     private boolean anonymous;
 
     public Field() {
@@ -48,5 +47,7 @@ public abstract class Field implements Serializable {
     public void setAnonymous(boolean anonymous) {
         this.anonymous = anonymous;
     }
+
+    public abstract FieldResponse generateResponseObject();
 
 }

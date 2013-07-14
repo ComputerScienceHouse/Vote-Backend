@@ -1,5 +1,8 @@
 package fields;
 
+import fields.response.FieldResponse;
+import fields.response.FormResponse;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -34,5 +37,13 @@ public class Form implements Serializable {
 
     public void addField(Field f) {
         this.elements.add(f);
+    }
+
+    public FormResponse generateFormResponse() {
+        ArrayList<FieldResponse> resp = new ArrayList<FieldResponse>();
+        for(Field f : elements) {
+            resp.add(f.generateResponseObject());
+        }
+        return new FormResponse(resp);
     }
 }
