@@ -9,10 +9,7 @@ import java.util.ArrayList;
  */
 public class FormResponseSet implements Serializable {
     private ArrayList<FormResponse> set;
-    private int formId;
-
-    public FormResponseSet(int formId) {
-        this.formId = formId;
+    public FormResponseSet() {
         this.set = new ArrayList<FormResponse>();
     }
 

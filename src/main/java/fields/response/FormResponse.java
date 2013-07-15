@@ -1,5 +1,6 @@
 package fields.response;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * Date: 7/13/13
  * Time: 6:47 PM
  */
-public class FormResponse {
+public class FormResponse implements Serializable {
     private ArrayList<FieldResponse> resp;
     public FormResponse(ArrayList<FieldResponse> r) {
         this.resp = (ArrayList<FieldResponse>) r.clone();
