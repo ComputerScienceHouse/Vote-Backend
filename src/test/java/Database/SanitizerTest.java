@@ -1,5 +1,6 @@
 package Database;
 
+import Utils.Sanitizer;
 import org.junit.Test;
 
 public class SanitizerTest {

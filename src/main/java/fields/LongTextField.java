@@ -12,11 +12,11 @@ import fields.response.LongTextFieldResponse;
  */
 public class LongTextField extends TextField {
     public static final int MAXLENGTH = 2000;
-    LongTextField() {
+    public LongTextField() {
         super(LongTextField.MAXLENGTH);
     }
 
-    LongTextField(int max) {
+    public LongTextField(int max) {
         super(max);
     }
 

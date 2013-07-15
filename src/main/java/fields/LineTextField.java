@@ -12,11 +12,11 @@ import fields.response.LineTextFieldResponse;
  */
 public class LineTextField extends TextField {
     public static final int MAXLENGTH = 150;
-    LineTextField() {
+    public LineTextField() {
         super(LineTextField.MAXLENGTH);
     }
 
-    LineTextField(int max) {
+    public LineTextField(int max) {
         super(max);
     }
 

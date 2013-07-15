@@ -1,4 +1,4 @@
-package Database;
+package Utils;
 
 import org.owasp.validator.html.*;
 
