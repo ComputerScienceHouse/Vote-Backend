@@ -31,6 +31,17 @@ public class Database {
             conn.setAutoCommit(false);
     }
 
+    public void initTables() throws SQLException, IOException {
+        Scanner s = new Scanner(new File("schema.psql"));
+        String str = "";
+        while(s.hasNextLine()) {
+            str += s.nextLine();
+        }
+        PreparedStatement st = conn.prepareStatement(str);
+        st.executeUpdate();
+        conn.commit();
+    }
+
     public void addVotingUser(int userId) throws ErrorAddingUserException {
         try {
             String q = "insert into VotingUser values (?);";
