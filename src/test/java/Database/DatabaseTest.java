@@ -4,29 +4,30 @@ import fields.CheckBoxField;
 import fields.FieldHeader;
 import fields.Form;
 import fields.LongTextField;
-import fields.response.FormResponseSet;
-import org.junit.Test;
 /**
  * Author: Andrew Hanes
  * Date: 7/14/13
  * Time: 6:08 PM
  */
 public class DatabaseTest {
-    @Test
+
+  //  @Test
     public void testAddVotingUser() throws Exception {
-        //new Database().addVotingUser(1);
+        new Database().addVotingUser(1);
     }
-    @Test
+  //  @Test
     public void testVotingUserExists() throws Exception {
-        assert(new Database().votingUserExists(1));
+        System.out.println("ASD");
+        assert(new Database().globalVotingUserExists(1));
+        assert(!new Database().globalVotingUserExists(-1));
     }
 
-    @Test
+  //  @Test
     public void testCreateObject() throws Exception {
         Database d = new Database();
     }
 
-    //@Test
+  //  @Test
     public void testStoreForm() throws Exception {
         Database d = new Database();
         Form f = new Form();
@@ -36,13 +37,13 @@ public class DatabaseTest {
         d.storeForm(1, f);
     }
 
-    @Test
+   // @Test
     public void testGetAllUsersFormIds() throws Exception {
         Database d = new Database();
         d.getAllUserFormIds(1);
     }
 
-    //@Test
+   // @Test
     public void testGetForm() throws Exception {
         Database d = new Database();
         Form f = d.getForm(1);
@@ -50,10 +51,21 @@ public class DatabaseTest {
         FieldHeader head= (FieldHeader) f.getField(2);
         System.out.println(head.getText());
     }
-
-    @Test
-    public void testGetFormResponseSet() throws Exception {
+    //@Test
+    public void testAddGlobalUser() throws Exception {
         Database d = new Database();
-        FormResponseSet frs = d.getFormResponseSet(5);
+        d.addVotingUser(93123);
+    }
+
+    //@Test
+    public void testRemoveGlobalUser() throws Exception {
+        Database d = new Database();
+        assert(!d.isValidFormVoter(3, 5));
+    }
+
+    //@Test
+    public void testAddVotingUserToForm() throws Exception {
+        Database d = new Database();
+        d.addVotingUser(2);
     }
 }
