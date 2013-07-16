@@ -32,7 +32,8 @@ public class DatabaseTest extends TestCase {
     }
 
     public void testAddVotingUser() throws Exception {
-        d.alreadyVoted(1, 1);
+        d.addVotingUser(33);
+        assert(d.globalVotingUserExists(33));
     }
 
     public void testGlobalVotingUserExists() throws Exception {
@@ -42,20 +43,6 @@ public class DatabaseTest extends TestCase {
     }
 
     public void testAddFormVotingUser() throws Exception {
-        int owner = 3;
-        int taker = 2;
-        d.addVotingUser(owner); //Owner
-        d.addVotingUser(taker); //Taker
-        Form f = new Form();
-        f.addField(new FieldHeader("Hello"));
-        f.addField(new LongTextField());
-        d.storeForm(owner, f);
-        int formId = d.getAllUserFormIds(owner)[0];
-        d.addFormVotingUser(taker, formId);
-        assert(d.isValidFormVoter(taker, formId));
-    }
-
-    public void testRemoveFormVotingUser() throws Exception {
         int owner = 3;
         int taker = 2;
         d.addVotingUser(owner); //Owner
