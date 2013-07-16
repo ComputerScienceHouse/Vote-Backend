@@ -13,7 +13,6 @@ public class SanitizerTest {
         assert(!test.contains("<p>"));
         assert(!test.contains("<a href = #/>"));
         assert(!test.contains("div"));
-
     }
 
     @Test

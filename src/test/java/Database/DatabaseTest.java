@@ -1,7 +1,7 @@
 package Database;
 
 import junit.framework.TestCase;
-
+import fields.*;
 /**
  * Author: Andrew Hanes
  * Date: 7/15/13
@@ -9,11 +9,14 @@ import junit.framework.TestCase;
  */
 public class DatabaseTest extends TestCase {
     Database d;
+    boolean inited = false;
     public void setUp() throws Exception {
         try {
             d = new Database("localhost", "postgres", "", "myapp_test"); //For travis-ci
             //d = new Database("dbauth.txt");
-            d.initTables();
+            if(!inited)
+                d.initTables();
+            inited = true;
         } catch(Exception e) {
             e.printStackTrace();
             throw new Exception("Error setting up database connection");
@@ -29,15 +32,39 @@ public class DatabaseTest extends TestCase {
     }
 
     public void testGlobalVotingUserExists() throws Exception {
-
+        assert(!d.globalVotingUserExists(123123));
+        d.addVotingUser(1);
+        assert(d.globalVotingUserExists(1));
     }
 
     public void testAddFormVotingUser() throws Exception {
-
+        int owner = 3;
+        int taker = 2;
+        d.addVotingUser(owner); //Owner
+        d.addVotingUser(taker); //Taker
+        Form f = new Form();
+        f.addField(new FieldHeader("Hello"));
+        f.addField(new LongTextField());
+        d.storeForm(owner, f);
+        int formId = d.getAllUserFormIds(owner)[0];
+        d.addFormVotingUser(taker, formId);
+        assert(d.isValidFormVoter(taker, formId));
     }
 
     public void testRemoveFormVotingUser() throws Exception {
-
+        int owner = 3;
+        int taker = 2;
+        d.addVotingUser(owner); //Owner
+        d.addVotingUser(taker); //Taker
+        Form f = new Form();
+        f.addField(new FieldHeader("Hello"));
+        f.addField(new LongTextField());
+        d.storeForm(owner, f);
+        int formId = d.getAllUserFormIds(owner)[0];
+        d.addFormVotingUser(taker, formId);
+        assert(d.isValidFormVoter(taker, formId));
+        d.removeFormVotingUser(taker, formId);
+        assert(!d.isValidFormVoter(taker, formId));
     }
 
     public void testIsValidFormVoter() throws Exception {
