@@ -17,25 +17,20 @@ import java.util.Scanner;
 public class Database {
     private Connection conn;
 
-    public Database() {
-        try {
-            Scanner in = new Scanner(new FileReader(new File("dbauth.txt")));
-            conn = DriverManager.getConnection(
-                    "jdbc:postgresql://" + in.nextLine(), in.nextLine(),
-                    in.nextLine());
-            conn.setAutoCommit(false);
-        }
-        catch(FileNotFoundException e) {
-            e.printStackTrace();
-            System.err.println("Cannot find dbauth file.");
-            System.exit(3);
-        }
-        catch(SQLException e2) {
-            e2.printStackTrace();
-            System.err.println("Sql Exception");
-            System.exit(2);
-        }
+    public Database(String fName) throws SQLException, FileNotFoundException {
+        Scanner in = new Scanner(new File(fName));
+        conn = DriverManager.getConnection(
+                "jdbc:postgresql://"+in.nextLine()+"/" + in.nextLine(), in.nextLine(), in.nextLine());
+        conn.setAutoCommit(false);
     }
+
+    public Database(String hostname, String username, String password, String database) throws SQLException,
+            FileNotFoundException {
+            conn = DriverManager.getConnection(
+                    "jdbc:postgresql://"+hostname+"/" + database, username, password); //For travis-ci
+            conn.setAutoCommit(false);
+    }
+
     public void addVotingUser(int userId) throws ErrorAddingUserException {
         try {
             String q = "insert into VotingUser values (?);";
