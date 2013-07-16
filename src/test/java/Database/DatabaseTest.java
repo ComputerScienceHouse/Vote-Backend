@@ -9,11 +9,16 @@ import junit.framework.TestCase;
 public class DatabaseTest extends TestCase {
     Database d;
     public void setUp() throws Exception {
-        d = new Database("localhost", "postgres", "", "myapp_test"); //For travis-ci
+        try {
+          d = new Database("localhost", "postgres", "", "myapp_test"); //For travis-ci
+        } catch(Exception e) {
+            e.printStackTrace();
+            throw new Exception("Error setting up database connection");
+        }
     }
 
     public void testAddVotingUser() throws Exception {
-        System.out.println("Setting up");
+        d.alreadyVoted(1, 1);
     }
 
     public void testGlobalVotingUserExists() throws Exception {
