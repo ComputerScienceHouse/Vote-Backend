@@ -6,8 +6,14 @@ create table VotingUser (
 create table Form (
     formId          serial primary key,
     ownerId         integer not null references VotingUser(userId),
-    formobject      bytea not null,
-    formresponse    bytea not null
+    formobject      bytea not null
+);
+
+create table FormResponse (
+    formId          integer references Form(formId),
+    ownerId         integer references VotingUser(userId),
+    formresponse    bytea not null,
+    primary key     (formId, ownerId)
 );
 
 
