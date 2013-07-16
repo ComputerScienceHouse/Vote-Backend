@@ -1,0 +1,4 @@
+localhost
+myapp_test
+postgres
+$

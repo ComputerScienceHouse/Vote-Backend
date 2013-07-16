@@ -3,3 +3,8 @@ Andrew Hanes
 ahanes AT csh.rit.edu
 
 Voting backend for the CSH Vote project.
+
+For database to work you need a file in the root directory of the project called dbauth.txt in this format:
+hostname
+username
+password
