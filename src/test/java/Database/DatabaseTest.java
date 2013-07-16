@@ -2,6 +2,9 @@ package Database;
 
 import junit.framework.TestCase;
 import fields.*;
+
+import java.sql.SQLException;
+
 /**
  * Author: Andrew Hanes
  * Date: 7/15/13
@@ -14,9 +17,11 @@ public class DatabaseTest extends TestCase {
         try {
             d = new Database("localhost", "postgres", "", "myapp_test"); //For travis-ci
             //d = new Database("dbauth.txt");
-            if(!inited)
+            try {
                 d.initTables();
-            inited = true;
+            } catch(SQLException e) {
+
+            }
         } catch(Exception e) {
             e.printStackTrace();
             throw new Exception("Error setting up database connection");
@@ -65,10 +70,6 @@ public class DatabaseTest extends TestCase {
         assert(d.isValidFormVoter(taker, formId));
         d.removeFormVotingUser(taker, formId);
         assert(!d.isValidFormVoter(taker, formId));
-    }
-
-    public void testIsValidFormVoter() throws Exception {
-
     }
 
     public void testStoreForm() throws Exception {
