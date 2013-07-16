@@ -19,17 +19,19 @@ public class Database {
 
     public Database(String fName) throws SQLException, FileNotFoundException {
         Scanner in = new Scanner(new File(fName));
+        String hostname, username, password, database;
+        hostname = in.nextLine();
+        database = in.nextLine();
+        username = in.nextLine();
+        password = in.nextLine();
+        if(password.equals("$")) {
+            password = "";
+        }
         conn = DriverManager.getConnection(
-                "jdbc:postgresql://"+in.nextLine()+"/" + in.nextLine(), in.nextLine(), in.nextLine());
+                "jdbc:postgresql://"+hostname+"/" + database, username, password);
         conn.setAutoCommit(false);
     }
 
-    public Database(String hostname, String username, String password, String database) throws SQLException,
-            FileNotFoundException {
-            conn = DriverManager.getConnection(
-                    "jdbc:postgresql://"+hostname+"/" + database, username, password); //For travis-ci
-            conn.setAutoCommit(false);
-    }
     //For testing
     public void initTables() throws SQLException, IOException {
         Scanner s = new Scanner(new File("schema.psql"));
