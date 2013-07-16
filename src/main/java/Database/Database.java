@@ -30,15 +30,20 @@ public class Database {
                     "jdbc:postgresql://"+hostname+"/" + database, username, password); //For travis-ci
             conn.setAutoCommit(false);
     }
-
+    //For testing
     public void initTables() throws SQLException, IOException {
         Scanner s = new Scanner(new File("schema.psql"));
         String str = "";
         while(s.hasNext()) {
             str += s.next() + " ";
         }
-        System.out.println(str);
         PreparedStatement st = conn.prepareStatement(str);
+        st.executeUpdate();
+        conn.commit();
+    }
+    //For testing
+    public void cleanTables() throws SQLException {
+        PreparedStatement st = conn.prepareStatement("drop table form, formresponse, validvoter, votinguser");
         st.executeUpdate();
         conn.commit();
     }
@@ -51,6 +56,7 @@ public class Database {
             st.executeUpdate();
             conn.commit();
         } catch(SQLException e) {
+            e.printStackTrace();
             try {
                 conn.rollback();
             } catch (Exception e2) {
@@ -58,6 +64,7 @@ public class Database {
                 System.err.println("Holy Fuck");
                 e2.printStackTrace();
             }
+            throw new ErrorAddingUserException();
         }
     }
 
@@ -171,7 +178,7 @@ public class Database {
             while(rs.next()) {
                 forms.add(rs.getInt(1));
             }
-            System.out.println(forms);
+            //System.out.println(forms);
             return forms.toArray(new Integer[forms.size()]);
         } catch(SQLException e) {
             e.printStackTrace();
@@ -283,7 +290,7 @@ public class Database {
 
     public boolean formExists(int formId) {
         try {
-            String q = "select count(*) frm form where formid = ?;";
+            String q = "select count(*) from form where formid = ?;";
             PreparedStatement st = conn.prepareStatement(q);
             st.setInt(1, formId);
             ResultSet rs = st.executeQuery();
