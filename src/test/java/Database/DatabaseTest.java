@@ -1,6 +1,7 @@
 package Database;
 
 import junit.framework.TestCase;
+
 /**
  * Author: Andrew Hanes
  * Date: 7/15/13
@@ -10,7 +11,9 @@ public class DatabaseTest extends TestCase {
     Database d;
     public void setUp() throws Exception {
         try {
-          d = new Database("localhost", "postgres", "", "myapp_test"); //For travis-ci
+            d = new Database("localhost", "postgres", "", "myapp_test"); //For travis-ci
+            //d = new Database("dbauth.txt");
+            d.initTables();
         } catch(Exception e) {
             e.printStackTrace();
             throw new Exception("Error setting up database connection");
