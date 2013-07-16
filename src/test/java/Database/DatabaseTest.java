@@ -16,7 +16,6 @@ public class DatabaseTest extends TestCase {
     public void setUp() throws Exception {
         try {
             d = new Database("localhost", "postgres", "", "myapp_test"); //For travis-ci
-            //d = new Database("dbauth.txt");
             try {
                 d.initTables();
             } catch(SQLException e) {
