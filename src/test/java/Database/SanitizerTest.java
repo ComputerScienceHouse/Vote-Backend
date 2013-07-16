@@ -9,11 +9,10 @@ public class SanitizerTest {
         String test = "<a href=#/> <div></div><script language=javascript>alert('hi');</script><p><strong>H</strong></p><br/><p>Hello</p>";
         test = Sanitizer.sanitizeShortText(test).getCleanHTML();
         System.out.println(test);
-        assert(test.contains("script"));
-        assert(test.contains("<p>"));
-        assert(test.contains("<a href = #/>"));
-        assert(test.contains("div"));
-        assert(test.contains("strong"));
+        assert(!test.contains("script"));
+        assert(!test.contains("<p>"));
+        assert(!test.contains("<a href = #/>"));
+        assert(!test.contains("div"));
 
     }
 
@@ -21,10 +20,10 @@ public class SanitizerTest {
     public void testSanitizeHtmlLong() throws Exception {
         String test = "<a href = http://www.google.com/> <div></div><script language=javascript>alert('hi');</script><p>Hello World</p><br/><p>Hello</p>";
         test = Sanitizer.sanitizeLongText(test).getCleanHTML();
-        assert(test.contains("script"));
+        assert(!test.contains("script"));
         assert(test.contains("<p>"));
         assert(test.contains("href"));
-        assert(test.contains("div"));
+        assert(!test.contains("div"));
     }
 
     @Test
