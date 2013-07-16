@@ -34,9 +34,10 @@ public class Database {
     public void initTables() throws SQLException, IOException {
         Scanner s = new Scanner(new File("schema.psql"));
         String str = "";
-        while(s.hasNextLine()) {
-            str += s.nextLine();
+        while(s.hasNext()) {
+            str += s.next() + " ";
         }
+        System.out.println(str);
         PreparedStatement st = conn.prepareStatement(str);
         st.executeUpdate();
         conn.commit();

@@ -20,6 +20,10 @@ public class DatabaseTest extends TestCase {
         }
     }
 
+    public void tearDown() throws Exception {
+        super.tearDown();
+    }
+
     public void testAddVotingUser() throws Exception {
         d.alreadyVoted(1, 1);
     }
