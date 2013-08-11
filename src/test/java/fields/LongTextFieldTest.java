@@ -12,6 +12,6 @@ import org.junit.Test;
 public class LongTextFieldTest {
     @Test
     public void testToJSON() throws Exception {
-        LongTextField f = new LongTextField(50);
+        LongTextField f = new LongTextField("asd", 50);
     }
 }

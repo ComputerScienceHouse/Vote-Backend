@@ -12,19 +12,29 @@ import fields.response.LongTextFieldResponse;
  */
 public class LongTextField extends TextField {
     public static final int MAXLENGTH = 2000;
-    public LongTextField() {
-        super(LongTextField.MAXLENGTH);
+    public LongTextField(String prompt) {
+        super(prompt, LongTextField.MAXLENGTH);
     }
 
-    public LongTextField(int max) {
-        super(max);
+    public LongTextField(String prompt, int max) {
+        super(prompt, max);
     }
 
     public String toString() {
         return null;
     }
 
+    public LongTextField() {
+        super("Null", 0);
+    }
+
     public FieldResponse generateResponseObject() {
         return new LongTextFieldResponse();
     }
+
+    public String generateHtml() {
+        return super.getPrompt() + "<br /><textarea id=\"" + super.getIdent().toString() + "\" maxlength=\""+ super.getMaxChars()
+                +"\" name=\"" + super.getPrompt() + "\"></textarea><br />";
+    }
+
 }

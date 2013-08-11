@@ -3,6 +3,7 @@ package fields;
 import fields.response.FieldResponse;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,16 +13,19 @@ import java.io.Serializable;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class Field implements Serializable {
+
+    private UUID ident;
     private boolean required;
     private String fieldName;
-    private boolean anonymous;
 
     public Field() {
         this.required = false;
+        ident = UUID.randomUUID();
     }
 
     public Field(boolean required) {
         this.required = required;
+        ident = UUID.randomUUID();
     }
 
     public boolean isRequired() {
@@ -40,14 +44,12 @@ public abstract class Field implements Serializable {
         this.fieldName = fieldName;
     }
 
-    public boolean isAnonymous() {
-        return anonymous;
-    }
-
-    public void setAnonymous(boolean anonymous) {
-        this.anonymous = anonymous;
+    public UUID getIdent() {
+        return ident;
     }
 
     public abstract FieldResponse generateResponseObject();
+
+    public abstract String generateHtml();
 
 }

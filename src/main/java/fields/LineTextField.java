@@ -12,12 +12,16 @@ import fields.response.LineTextFieldResponse;
  */
 public class LineTextField extends TextField {
     public static final int MAXLENGTH = 150;
-    public LineTextField() {
-        super(LineTextField.MAXLENGTH);
+    public LineTextField(String prompt) {
+        super(prompt, LineTextField.MAXLENGTH);
     }
 
-    public LineTextField(int max) {
-        super(max);
+    public LineTextField(String prompt, int max) {
+        super(prompt, max);
+    }
+
+    public LineTextField() {
+        super("Null", 0);
     }
 
     public String toString() {
@@ -26,5 +30,9 @@ public class LineTextField extends TextField {
 
     public FieldResponse generateResponseObject() {
         return new LineTextFieldResponse();
+    }
+    public String generateHtml() {
+        return super.getPrompt() + ": <input id=\"" + super.getIdent().toString() + "\" type=\"text\" maxlength=\""+ super.getMaxChars()
+                +"\" name=\"" + super.getPrompt() + "\"><br />";
     }
 }
