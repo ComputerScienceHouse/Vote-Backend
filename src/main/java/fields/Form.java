@@ -15,6 +15,8 @@ import java.util.ArrayList;
  */
 public class Form implements Serializable {
     private ArrayList<Field> elements;
+
+    private boolean isAnonymous;
     public Form(ArrayList<Field> elements) {
         this.elements = elements;
     }
@@ -45,5 +47,22 @@ public class Form implements Serializable {
             resp.add(f.generateResponseObject());
         }
         return new FormResponse(resp);
+    }
+
+    public boolean isAnonymous() {
+        return isAnonymous;
+    }
+
+    public void setAnonymous(boolean anonymous) {
+        isAnonymous = anonymous;
+    }
+
+    public String generateFormHtml() {
+        String html = "<form>";
+        for(Field f : this.elements) {
+            html += f.generateHtml();
+        }
+        html += "<input type=\"submit\" value=\"Submit\"></form>";
+        return html;
     }
 }

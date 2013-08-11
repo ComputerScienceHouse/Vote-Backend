@@ -34,7 +34,7 @@ public class FormTest {
 
     @Test
     public void testSerial() throws Exception {
-        Field f = new LineTextField(1);
+        Field f = new LineTextField("asd", 1);
         f.setFieldName("SUPER");
         f.setRequired(true);
         form.addField(f);
@@ -48,5 +48,42 @@ public class FormTest {
         ObjectInputStream ois = new ObjectInputStream(fis);
         read = (Form)ois.readObject();
         ois.close();
+    }
+
+    @Test
+    public void testJson() throws Exception {
+
+    }
+
+    @Test
+    public void testGenerateHtml() throws Exception {
+        Form f = new Form();
+        f.addField(new FieldHeader("Hello World", 1));
+        f.addField(new LongTextField("What is this?", 250));
+        CheckBoxField cb = new CheckBoxField();
+        cb.addOption("Opt1");
+        cb.addOption("Opt2");
+        cb.addOption("Opt3");
+        cb.addOption("Opt4");
+
+        RadioField cb2 = new RadioField();
+        cb2.addOption("Opt1");
+        cb2.addOption("Opt2");
+        cb2.addOption("Opt3");
+        cb2.addOption("Opt4");
+
+        RadioField cb3 = new RadioField();
+        cb3.addOption("Opt1");
+        cb3.addOption("Opt2");
+        cb3.addOption("Opt3");
+        cb3.addOption("Opt4");
+
+        f.addField(new FieldHeader("Which Option?", 3));
+        f.addField(cb);
+        f.addField(cb3);
+        f.addField(cb2);
+        f.addField(new LineTextField("What is your name?", 5));
+        f.addField(new FieldHeader("Thanks for testing!", 4));
+        System.out.println(f.generateFormHtml());
     }
 }

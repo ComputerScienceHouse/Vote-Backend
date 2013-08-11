@@ -33,4 +33,12 @@ public class CheckBoxFieldTest {
         ois.close();
         System.out.println(read.getOptions());
     }
+
+    @Test
+    public void testGenerateHTML() throws Exception {
+        CheckBoxField f = new CheckBoxField();
+        f.addOption("Test1");
+        f.addOption("Test2");
+        System.out.println(f.generateHtml());
+    }
 }

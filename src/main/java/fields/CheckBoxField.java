@@ -3,6 +3,8 @@ package fields;
 import fields.response.CheckBoxFieldResponse;
 import fields.response.FieldResponse;
 
+import java.util.UUID;
+
 /**
  * Created with IntelliJ IDEA.
  * User: ahanes
@@ -22,5 +24,15 @@ public class CheckBoxField extends SelectionField {
 
     public FieldResponse generateResponseObject() {
         return new CheckBoxFieldResponse(super.options);
+    }
+
+    public String generateHtml() {
+        UUID uuid = UUID.randomUUID();
+        String line = "";
+        for(String s : super.options) {
+            line += "<input type=\"checkbox\" name=\"" + super.getIdent().toString() +
+                    "\" value=\"" + s + "\" > " + s + "<br />\n";
+        }
+        return line;
     }
 }

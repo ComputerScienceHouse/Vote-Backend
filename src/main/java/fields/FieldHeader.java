@@ -9,8 +9,15 @@ import fields.response.FieldResponse;
  */
 public class FieldHeader extends Field {
     private String text;
+    private int hLevel;
     public FieldHeader(String text) {
         this.text = text;
+        this.setHLevel(5);
+    }
+
+    public FieldHeader(String text, int hLevel) {
+        this.text = text;
+        this.setHLevel(hLevel);
     }
 
     public String getText() {
@@ -23,5 +30,23 @@ public class FieldHeader extends Field {
 
     public FieldResponse generateResponseObject() {
         return null;
+    }
+
+    public int getHLevel() {
+        return hLevel;
+    }
+
+    public void setHLevel(int hLevel) {
+        if(hLevel > 0 && hLevel < 6) {
+            this.hLevel = hLevel;
+        }
+        else {
+            System.err.println("hLevel invalid");
+            this.hLevel = 5;
+        }
+    }
+
+    public String generateHtml() {
+        return "<h" + this.hLevel +">" + this.text + "</h" + this.hLevel + "><br />";
     }
 }
