@@ -12,14 +12,17 @@ public abstract class TextField extends Field {
     public static final String PROPERTY_MAXCHARS = "max";
     private int maxChars;
 
-    public TextField(int maxChars) {
+    private String prompt;
+    public TextField(String prompt, int maxChars) {
         super();
         this.maxChars = maxChars;
+        this.setPrompt(prompt);
     }
 
-    public TextField() {
+    public TextField(String prompt) {
         super();
         this.maxChars = 0;
+        this.setPrompt(prompt);
     }
 
     public int getMaxChars() {
@@ -29,4 +32,12 @@ public abstract class TextField extends Field {
     public void setMaxChars(int maxChars) {
         this.maxChars = maxChars;
     }
+    public String getPrompt() {
+        return prompt;
+    }
+
+    public void setPrompt(String prompt) {
+        this.prompt = prompt;
+    }
+
 }

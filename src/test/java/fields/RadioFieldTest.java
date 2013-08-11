@@ -32,4 +32,12 @@ public class RadioFieldTest {
         f.removeOption("test");
         assert(f.getOptions().size() == 0);
     }
+
+    @Test
+    public void testGenerateHTML() throws Exception {
+        RadioField f = new RadioField();
+        f.addOption("Test1");
+        f.addOption("Test2");
+        System.out.println(f.generateHtml());
+    }
 }
